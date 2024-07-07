@@ -2,13 +2,15 @@ version: '3.1'
 
 services:
   db:
-    image: postgres:latest
+    image: my_custom_postgres
     restart: always
-    environment:
-      POSTGRES_PASSWORD: psql_pass # Установите свой пароль
-      POSTGRES_USER: master_user         # Установите своего пользователя
-      POSTGRES_DB: master_db             # Установите имя вашей базы данных
     ports:
       - "5432:5432"
     volumes:
-      - ./data:/var/lib/postgresql/data  # Монтирование папки для данных
+      - ./data:/var/lib/postgresql/data
+      - ./postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./pg_hba.conf:/etc/postgresql/pg_hba.conf
+    environment:
+      POSTGRES_PASSWORD: psql_pass
+      POSTGRES_USER: master_user
+      POSTGRES_DB: master_db
