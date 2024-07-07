@@ -14,3 +14,4 @@ services:
       POSTGRES_PASSWORD: psql_pass
       POSTGRES_USER: master_user
       POSTGRES_DB: master_db
+      ROLE: master
