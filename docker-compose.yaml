@@ -15,3 +15,9 @@ services:
       POSTGRES_USER: master_user
       POSTGRES_DB: master_db
       ROLE: master
+    networks:
+      - psql2replicas_default
+
+networks:
+  psql2replicas_default:
+    external: true
